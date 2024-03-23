@@ -96,7 +96,7 @@ impl SRVR {
         let now = Utc::now();
         let http_date = now.format("%a, %d %b %Y %H:%M:%S GMT");
 
-        response.push_str(&format!("Date: {}\r\n", http_date)); // Fix typo
+        response.push_str(&format!("Date: {}\r\n", http_date));
         response.push_str("Content-Type: text/html; charset=UTF-8\r\n");
         match request {
             HttpMethod::Get(r) => {
@@ -104,7 +104,7 @@ impl SRVR {
                     let file_buf =
                         fs::read_to_string("./pages/index.html").unwrap_or(String::from(""));
                     response.push_str(&format!(
-                        "Content-Length: {}\r\n\r\n{}", // Fix typo and add newline after headers
+                        "Content-Length: {}\r\n\r\n{}",
                         file_buf.len(),
                         &file_buf
                     ));
