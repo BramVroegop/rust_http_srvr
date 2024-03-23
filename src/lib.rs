@@ -1,23 +1,10 @@
-use std::{error::Error, fmt::Display, fs, io};
+use std::{fs, io};
 
 use chrono::Utc;
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::TcpListener,
 };
-
-#[derive(Debug)]
-struct HttpError {
-    message: String,
-}
-
-impl Display for HttpError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.message)
-    }
-}
-
-impl Error for HttpError {}
 
 pub struct SRVR;
 
