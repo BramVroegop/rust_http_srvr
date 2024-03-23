@@ -29,12 +29,7 @@ impl SRVR {
         loop {
             let (socket, _) = listener.accept().await?;
             tokio::spawn(async move {
-                let res = SRVR::handle_connection(socket).await;
-
-                match res {
-                    Ok(e) => {}
-                    Err(e) => return,
-                }
+                let _ = SRVR::handle_connection(socket).await.unwrap_or(());
             });
         }
     }
@@ -115,7 +110,6 @@ impl SRVR {
                     ));
                 }
             }
-            _ => {}
         }
         response
     }
